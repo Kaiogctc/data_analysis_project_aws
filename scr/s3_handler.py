@@ -1,4 +1,3 @@
-# src/s3_handler.py
 """Gerencia operações no S3 (upload de arquivos e criação de buckets).
 """
 
