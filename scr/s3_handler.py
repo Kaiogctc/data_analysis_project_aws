@@ -1,5 +1,4 @@
-"""Gerencia operações no S3 (upload de arquivos e criação de buckets).
-"""
+""" acessar o s3 bucket"""
 
 import boto3
 from botocore.exceptions import ClientError
@@ -12,7 +11,7 @@ class S3Handler:
     def __init__(self):
         """Inicializa o cliente S3"""
         self.s3_client = boto3.client('s3', region_name=AWS_REGION)
-        print(f"✅ Cliente S3 inicializado na região {AWS_REGION}")
+        print(f" Cliente S3 inicializado na região {AWS_REGION}")
 
     def criar_bucket(self):
         """
@@ -22,7 +21,7 @@ class S3Handler:
         try:
             # Verifica se o bucket já existe
             self.s3_client.head_bucket(Bucket=BUCKET_NAME)
-            print(f"ℹ️  Bucket '{BUCKET_NAME}' já existe!")
+            print(f"️  Bucket '{BUCKET_NAME}' já existe!")
             return True
 
         except ClientError as e:
@@ -94,7 +93,7 @@ class S3Handler:
             print(f"❌ Erro ao listar arquivos: {e}")
 
 
-# Exemplo de uso (só roda se executar este arquivo diretamente)
+
 if __name__ == "__main__":
     handler = S3Handler()
     handler.criar_bucket()
