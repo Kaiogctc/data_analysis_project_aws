@@ -128,7 +128,7 @@ class AthenaHandler:
         """Consulta simples: retorna todas as vendas"""
         query = """
         SELECT * 
-        FROM sales
+        FROM data
         LIMIT 10
         """
         return self.executar_query(query)
@@ -141,7 +141,7 @@ class AthenaHandler:
             COUNT(*) as total_vendas,
             SUM(quantity) as quantidade_total,
             ROUND(SUM(price * quantity), 2) as receita_total
-        FROM sales
+        FROM data
         GROUP BY product
         ORDER BY receita_total DESC
         """
@@ -155,7 +155,7 @@ class AthenaHandler:
             COUNT(*) as total_vendas,
             ROUND(AVG(price * quantity), 2) as ticket_medio,
             ROUND(SUM(price * quantity), 2) as receita_total
-        FROM sales
+        FROM data
         GROUP BY region
         ORDER BY receita_total DESC
         """
@@ -168,7 +168,7 @@ class AthenaHandler:
             customer,
             COUNT(*) as num_compras,
             ROUND(SUM(price * quantity), 2) as total_gasto
-        FROM sales
+        FROM data
         GROUP BY customer
         ORDER BY total_gasto DESC
         LIMIT 5

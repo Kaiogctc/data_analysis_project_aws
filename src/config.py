@@ -2,7 +2,7 @@
 
 
 AWS_REGION = 'us-east-1'
-BUCKET_NAME = 'vendas-python-Kaio-2025'
+BUCKET_NAME = 'vendas-python-kaio-2025'
 DATABASE_NAME = 'sales_db'
 TABLE_NAME = 'sales'
 CRAWLER_NAME = 'sales-crawler'
