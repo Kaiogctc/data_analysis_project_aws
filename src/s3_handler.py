@@ -39,14 +39,14 @@ class S3Handler:
                             CreateBucketConfiguration={'LocationConstraint': AWS_REGION}
                         )
 
-                    print(f"✅ Bucket '{BUCKET_NAME}' criado com sucesso!")
+                    print(f" Bucket '{BUCKET_NAME}' criado com sucesso!")
                     return True
 
                 except ClientError as create_error:
-                    print(f"❌ Erro ao criar bucket: {create_error}")
+                    print(f" Erro ao criar bucket: {create_error}")
                     return False
             else:
-                print(f"❌ Erro ao verificar bucket: {e}")
+                print(f" Erro ao verificar bucket: {e}")
                 return False
 
     def upload_arquivo(self, arquivo_local, caminho_s3):
@@ -58,7 +58,7 @@ class S3Handler:
             caminho_s3: onde o arquivo vai ficar no S3
         """
         try:
-            print(f"📤 Fazendo upload de '{arquivo_local}' para s3://{BUCKET_NAME}/{caminho_s3}")
+            print(f" Fazendo upload de '{arquivo_local}' para s3://{BUCKET_NAME}/{caminho_s3}")
 
             self.s3_client.upload_file(
                 Filename=arquivo_local,
@@ -66,15 +66,15 @@ class S3Handler:
                 Key=caminho_s3
             )
 
-            print(f"✅ Upload concluído com sucesso!")
+            print(f" Upload concluído com sucesso!")
             return True
 
         except FileNotFoundError:
-            print(f"❌ Erro: Arquivo '{arquivo_local}' não encontrado!")
+            print(f" Erro: Arquivo '{arquivo_local}' não encontrado!")
             return False
 
         except ClientError as e:
-            print(f"❌ Erro ao fazer upload: {e}")
+            print(f" Erro ao fazer upload: {e}")
             return False
 
     def listar_arquivos(self):
@@ -83,14 +83,14 @@ class S3Handler:
             response = self.s3_client.list_objects_v2(Bucket=BUCKET_NAME)
 
             if 'Contents' in response:
-                print(f"\n📁 Arquivos no bucket '{BUCKET_NAME}':")
+                print(f"\n Arquivos no bucket '{BUCKET_NAME}':")
                 for obj in response['Contents']:
                     print(f"   - {obj['Key']} ({obj['Size']} bytes)")
             else:
-                print(f"ℹ️  Bucket '{BUCKET_NAME}' está vazio")
+                print(f"️  Bucket '{BUCKET_NAME}' está vazio")
 
         except ClientError as e:
-            print(f"❌ Erro ao listar arquivos: {e}")
+            print(f" Erro ao listar arquivos: {e}")
 
 
 
