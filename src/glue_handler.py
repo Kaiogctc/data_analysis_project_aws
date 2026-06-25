@@ -44,11 +44,7 @@ class GlueHandler:
                 return False
 
     def criar_crawler(self):
-        """
-        Cria um Crawler no Glue.
-        O Crawler é um robô que escaneia seus dados no S3 e
-        descobre automaticamente o schema (colunas, tipos).
-        """
+
         try:
 
             s3_target_path = f's3://{BUCKET_NAME}/data/'
