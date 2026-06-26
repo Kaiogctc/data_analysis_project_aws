@@ -15,8 +15,7 @@ class S3Handler:
 
     def criar_bucket(self):
         """
-        Cria o bucket no S3 se ele não existir.
-        Bucket é como uma "pasta raiz" no S3.
+        Cria o bucket no S3 se ele não existir
         """
         try:
             # Verifica se o bucket já existe
@@ -28,7 +27,7 @@ class S3Handler:
             error_code = e.response['Error']['Code']
 
             if error_code == '404':
-                # Bucket não existe, vamos criar
+                # O bucket não existe, criar 
                 try:
                     # Na região us-east-1 não precisa especificar LocationConstraint
                     if AWS_REGION == 'us-east-1':
@@ -51,10 +50,10 @@ class S3Handler:
 
     def upload_arquivo(self, arquivo_local, caminho_s3):
         """
-        Faz upload de um arquivo para o S3.
+         upload de um arquivo para o S3.
 
         Args:
-            arquivo_local: caminho do arquivo no seu computador
+            arquivo_local: caminho do arquivo no meu computador
             caminho_s3: onde o arquivo vai ficar no S3
         """
         try:

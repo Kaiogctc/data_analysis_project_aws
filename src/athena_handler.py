@@ -7,7 +7,7 @@ from config import DATABASE_NAME, ATHENA_OUTPUT_BUCKET, AWS_REGION
 
 
 class AthenaHandler:
-    """Classe para executar consultas SQL no Athena"""
+    
 
     def __init__(self):
         """Inicializa o cliente Athena"""
@@ -16,13 +16,10 @@ class AthenaHandler:
 
     def executar_query(self, query_sql):
         """
-        Executa uma query SQL no Athena.
 
         Args:
             query_sql: A consulta SQL que você quer executar
 
-        Returns:
-            Lista de resultados ou None se houver erro
         """
         try:
             print(f"\n Executando query:")
@@ -84,9 +81,6 @@ class AthenaHandler:
         """
         Formata os resultados da query de forma legível.
 
-        Args:
-            results: Resultados brutos do Athena
-
         Returns:
             Lista de dicionários com os resultados
         """
@@ -125,7 +119,7 @@ class AthenaHandler:
         return data
 
     def query_todas_vendas(self):
-        """Consulta simples: retorna todas as vendas"""
+        """ Retorna todas as vendas"""
         query = """
         SELECT * 
         FROM data
