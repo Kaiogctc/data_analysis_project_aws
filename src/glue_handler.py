@@ -23,7 +23,6 @@ class GlueHandler:
     def criar_database(self):
         """
         Cria um database no Glue Catalog.
-        Database é como um "schema" que agrupa suas tabelas.
         """
         try:
             self.glue_client.create_database(
@@ -52,7 +51,7 @@ class GlueHandler:
             self.glue_client.create_crawler(
                 Name=CRAWLER_NAME,
                 Role='arn:aws:iam::747103386091:role/AWSGlueServiceRole-vendas',
-                #  trocar isso
+                #  Aqui esta um 'endereço' para a AWS, o nome precisa ser mudado de acordo
                 DatabaseName=DATABASE_NAME,
                 Description='Crawler para catalogar dados de vendas',
                 Targets={
